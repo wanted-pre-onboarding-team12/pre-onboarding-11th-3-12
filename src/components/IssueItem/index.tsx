@@ -3,31 +3,44 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { IconMessage } from '../../assets';
+import { IconLeaf } from '../../assets';
 
 const IssueItem = ({ issue }: any) => {
   const navigate = useNavigate();
   //const goDetail = () => navigate(`/detail/${number}`);
 
   return (
-    <Article>
-      <Left>
-        <Title>
-          <span># {issue.number} </span>
-          {issue.title}
-        </Title>
+    <Center>
+      <Padding16>
+        <IconLeaf />
+      </Padding16>
+      <Article>
+        <Left>
+          <Title>
+            <span># {issue.number} </span>
+            {issue.title}
+          </Title>
 
-        <Bottom>
-          <span>작성자 : {issue.username} </span>
-          <span>작성일 : {issue.created_at.slice(0, 10)}</span>
-        </Bottom>
-      </Left>
-      <Right>
-        <IconMessage />
-        <div>{issue.comments}</div>
-      </Right>
-    </Article>
+          <Bottom>
+            <span>작성자 : {issue.username} </span>
+            <span>작성일 : {issue.created_at.slice(0, 10)}</span>
+          </Bottom>
+        </Left>
+        <Right>
+          <IconMessage />
+          <div>{issue.comments}</div>
+        </Right>
+      </Article>
+    </Center>
   );
 };
+const Padding16 = styled.div`
+  padding: 16px;
+`;
+const Center = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Article = styled.article`
   width: 100%;
   padding: 16px;

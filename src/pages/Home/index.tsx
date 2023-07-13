@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from '@emotion/styled';
 
 import {
@@ -12,40 +12,74 @@ import { getIssues } from '../../service/service';
 import Loading from '../../components/Common/Loading';
 import Advertisement from '../../components/Advertisement';
 import IssueItem from '../../components/IssueItem';
+
 const Home = () => {
   const dispatch = useIssuesDispatch();
   const issues = useIssuesState();
+  const [page, setPage] = useState(1);
+  const pageEnd = useRef<HTMLDivElement>(null);
+
+  const loadMore = () => {
+    setPage(prev => prev + 1);
+  };
 
   useEffect(() => {
     const fetchIssues = async () => {
-      await getIssues(dispatch, 1);
+      await getIssues(dispatch, page);
     };
+
     fetchIssues();
-  }, [dispatch]);
+  }, [dispatch, page]);
+
+  useEffect(() => {
+    if (issues.loading) {
+      const observer = new IntersectionObserver(
+        entries => {
+          if (entries[0].isIntersecting) {
+            loadMore();
+          }
+        },
+        { threshold: 1 },
+      );
+
+      if (pageEnd.current) {
+        observer.observe(pageEnd.current);
+      }
+
+      return () => {
+        if (pageEnd.current) {
+          observer.unobserve(pageEnd.current);
+        }
+      };
+    }
+  }, [issues.loading]);
 
   return (
     <>
       <Header />
       <Main>
-        {issues.data.map((issue: any, index: any) => {
-          return (
-            <React.Fragment key={issue.created_at + issue.number}>
-              {index % 4 === 0 && index !== 0 && (
-                <Advertisement
-                  src={adObject.src}
-                  alt={adObject.alt}
-                  path={adObject.path}
-                />
-              )}
-              <IssueItem issue={issue} />
-            </React.Fragment>
-          );
-        })}
+        {issues.data.map((issue: any, index: any) => (
+          <React.Fragment key={issue.created_at + issue.number}>
+            {index % 4 === 0 && index !== 0 && (
+              <Advertisement
+                src={adObject.src}
+                alt={adObject.alt}
+                path={adObject.path}
+              />
+            )}
+            <IssueItem issue={issue} />
+          </React.Fragment>
+        ))}
       </Main>
-      {issues.loading && <Loading />}
+      {issues.loading && (
+        <div ref={pageEnd}>
+          <Loading />
+        </div>
+      )}
     </>
   );
 };
+
 const adObject = {
   src: 'https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100',
   alt: 'wanted',

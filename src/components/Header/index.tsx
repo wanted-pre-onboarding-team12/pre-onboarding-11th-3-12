@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-// import { TitleContext } from '../../..';
 import styled from '@emotion/styled';
 import { IconGithub } from '../../assets/index';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
-  // const  title    = useContext(TitleContext);
   const navigate = useNavigate();
   const title = {
     organization: 'facebook',

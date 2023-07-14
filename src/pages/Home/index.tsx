@@ -53,7 +53,7 @@ const Home = () => {
       <Header />
       <Main>
         {issues.data?.map((issue: any, index: any) => (
-          <React.Fragment key={issue.created_at + issue.number}>
+          <React.Fragment key={issue.created_at + issue.number + index}>
             {index % 4 === 0 && index !== 0 && (
               <Advertisement
                 src={adObject.src}

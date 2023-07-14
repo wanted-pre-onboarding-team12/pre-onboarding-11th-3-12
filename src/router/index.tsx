@@ -7,9 +7,11 @@ import Layout from '../components/Layout';
 import { HomePage, DetailPage, NotFoundPage } from '../pages';
 
 const router = (
-  <Route element={<Layout />}>
-    <Route path="/" element={<HomePage />} />
-    <Route path="detail/:id" element={<DetailPage />} />
+  <Route>
+    <Route element={<Layout />}>
+      <Route path="/" element={<HomePage />} />
+      <Route path="detail/:id" element={<DetailPage />} />
+    </Route>
     <Route path="/*" element={<NotFoundPage />} />
   </Route>
 );

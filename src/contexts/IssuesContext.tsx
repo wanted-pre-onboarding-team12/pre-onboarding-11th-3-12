@@ -45,7 +45,10 @@ const issuesReducer = (state: State, action: Action): State | undefined => {
         (issue: any) => issue.id === action.payload,
       );
       localStorage.setItem('data', JSON.stringify(filteredData[0]));
-      return;
+      return {
+        ...state,
+        data: filteredData,
+      };
 
     default:
       throw new Error(`Unhanded action type`);

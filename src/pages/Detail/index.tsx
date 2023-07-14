@@ -7,7 +7,7 @@ const Detail = () => {
   const issue = JSON.parse(localStorage.getItem('data') || '{}');
   return (
     <Wrap>
-      {/* <Header /> */}
+      <Header />
       <IssueDetail issue={issue} />
     </Wrap>
   );

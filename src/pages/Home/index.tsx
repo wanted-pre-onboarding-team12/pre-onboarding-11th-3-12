@@ -15,7 +15,8 @@ import IssueItem from '../../components/IssueItem';
 
 const Home = () => {
   const dispatch = useIssuesDispatch();
-  const issues = useIssuesState();
+  //@ts-ignore
+  const { issues } = useIssuesState();
   const [page, setPage] = useState(1);
   const pageEnd = useRef<HTMLDivElement>(null);
 
@@ -31,7 +32,6 @@ const Home = () => {
     const observer = new IntersectionObserver(
       entries => {
         if (entries[0].isIntersecting) {
-          console.log('1');
           loadMore();
         }
       },
@@ -47,15 +47,13 @@ const Home = () => {
         observer.unobserve(pageEnd.current);
       }
     };
-    //if (issues.loading) {
-    //}
   }, []);
   return (
     <>
       <Header />
       <Main>
         {issues.data?.map((issue: any, index: any) => (
-          <React.Fragment key={issue.created_at + issue.number}>
+          <React.Fragment key={issue.created_at + issue.number + index}>
             {index % 4 === 0 && index !== 0 && (
               <Advertisement
                 src={adObject.src}

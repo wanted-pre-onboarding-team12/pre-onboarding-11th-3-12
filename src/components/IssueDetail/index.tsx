@@ -11,30 +11,30 @@ const IssueDetail = ({ issue }: any) => {
     <main>
       <Article>
         <LeftContainer>
-          <img src={issue.user.avatar_url} alt="userimage" />
+          <img src={issue?.user.avatar_url} alt="userimage" />
           <div>
             <IconLeaf />
-            {issue.state.toUpperCase()}
+            {issue?.state.toUpperCase()}
           </div>
         </LeftContainer>
 
         <LeftDiv>
           <p className="leftp">
-            <span># {issue.number}</span>
-            {issue.title}
+            <span># {issue?.number}</span>
+            {issue?.title}
           </p>
           <p className="rightp">
-            <span>작성자:{issue.user.login}</span>
-            <span>작성일:{issue.created_at}</span>
+            <span>작성자:{issue?.user.login}</span>
+            <span>작성일:{issue?.created_at}</span>
           </p>
         </LeftDiv>
         <RightDiv>
           <IconMessage />
-          <div> {issue.comments}</div>
+          <div> {issue?.comments}</div>
         </RightDiv>
       </Article>
       <Section>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue.body}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue?.body}</ReactMarkdown>
       </Section>
     </main>
   );

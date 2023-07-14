@@ -8,10 +8,10 @@ import {
 } from '../../contexts/IssuesContext';
 import { getIssue } from '../../service/service';
 import { useParams } from 'react-router';
+import Loading from '../../components/Common/Loading';
 
 const Detail = () => {
   const { id } = useParams();
-  console.log(id);
   const dispatch = useIssuesDispatch();
   //@ts-ignore
   const { issue } = useIssuesState();
@@ -23,6 +23,7 @@ const Detail = () => {
   return (
     <Wrap>
       <IssueDetail issue={issue.data} />
+      {issue.loading && <Loading />}
     </Wrap>
   );
 };

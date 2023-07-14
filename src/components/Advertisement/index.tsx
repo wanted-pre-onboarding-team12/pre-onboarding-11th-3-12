@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 const Advertisement = ({ src, alt, path }: any) => {
   return (
-    <Link href={path}>
+    <Link target="_blank" href={path}>
       <h3>[ AD ]</h3>
       <img src={src} alt={alt} />
     </Link>

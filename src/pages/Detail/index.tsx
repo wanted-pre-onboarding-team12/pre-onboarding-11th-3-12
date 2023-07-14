@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
-import Header from '../../components/Layout/Header';
 import IssueDetail from '../../components/IssueDetail';
 import {
   useIssuesDispatch,
@@ -20,10 +19,11 @@ const Detail = () => {
     getIssue(dispatch, Number(id));
   }, [id]);
 
-  return (
+  return issue.loading ? (
+    <Loading />
+  ) : (
     <Wrap>
       <IssueDetail issue={issue.data} />
-      {issue.loading && <Loading />}
     </Wrap>
   );
 };

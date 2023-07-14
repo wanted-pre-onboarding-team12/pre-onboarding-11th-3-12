@@ -7,7 +7,6 @@ import { IconLeaf } from '../../assets';
 import { IconMessage } from '../../assets';
 
 const IssueDetail = ({ issue }: any) => {
-  console.log({ issue });
   return (
     <main>
       <Article>
@@ -35,9 +34,7 @@ const IssueDetail = ({ issue }: any) => {
         </RightDiv>
       </Article>
       <Section>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {/* body */}body
-        </ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue.body}</ReactMarkdown>
       </Section>
     </main>
   );

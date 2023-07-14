@@ -4,15 +4,12 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { IconMessage } from '../../assets';
 import { IconLeaf } from '../../assets';
-import { useIssuesDispatch } from '../../contexts/IssuesContext';
 
 const IssueItem = ({ issue }: any) => {
   const navigate = useNavigate();
-  const dispatch = useIssuesDispatch();
 
   const handleClick = () => {
-    dispatch({ type: 'GET_ISSUE_DETAIL', payload: issue.id });
-    navigate(`/detail/${issue.id}`);
+    navigate(`/detail/${issue.number}`);
   };
 
   return (

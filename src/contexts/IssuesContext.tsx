@@ -3,28 +3,30 @@ import { IssueType } from '../types/issue';
 
 type State = {
   loading: boolean;
-  data: IssueType | [];
-  error: any;
+  data: IssueType | [] | null;
+  error: Error | null;
 };
 
 type InitialState = {
   issues: State;
-  issue: { data: null };
+  issue: State;
 };
 
 export type Action =
   | { type: 'GET_ISSUES' }
   | { type: 'GET_ISSUES_SUCCESS'; data: IssueType }
-  | { type: 'GET_ISSUES_ERROR'; error: any }
-  | { type: 'GET_ISSUE_DETAIL'; data: IssueType };
+  | { type: 'GET_ISSUES_ERROR'; error: Error | null }
+  | { type: 'GET_ISSUE' }
+  | { type: 'GET_ISSUE_SUCCESS'; data: IssueType }
+  | { type: 'GET_ISSUE_ERROR'; error: Error | null };
 
-const loadingState = (data: any) => ({
+const loadingState = (data: any = null) => ({
   loading: true,
   data,
   error: null,
 });
 
-const success = (data: any) => ({
+const success = (data: IssueType) => ({
   loading: false,
   data,
   error: null,
@@ -44,15 +46,15 @@ const initialState: InitialState = {
     error: null,
   },
   issue: {
+    loading: false,
     data: null,
+    error: null,
   },
 };
 
 const issuesReducer = (state: InitialState, action: Action): any => {
   switch (action.type) {
     case 'GET_ISSUES':
-      console.log(state);
-
       return {
         ...state,
         issues: loadingState(state.issues.data),
@@ -71,12 +73,23 @@ const issuesReducer = (state: InitialState, action: Action): any => {
         issues: error(action.error),
       };
 
-    case 'GET_ISSUE_DETAIL':
-      console.log(action);
+    case 'GET_ISSUE':
+      console.log('get');
+      return {
+        ...state,
+        issue: loadingState(),
+      };
 
+    case 'GET_ISSUE_SUCCESS':
       return {
         ...state,
         issue: success(action.data),
+      };
+
+    case 'GET_ISSUE_ERROR':
+      return {
+        ...state,
+        issue: error(action.error),
       };
 
     default:

@@ -3,7 +3,7 @@ import instance from './config';
 import { Action } from '../contexts/IssuesContext';
 
 export const getIssues = async (dispatch: Dispatch<Action>, page: number) => {
-  //dispatch({ type: 'GET_ISSUES' });
+  dispatch({ type: 'GET_ISSUES' });
 
   try {
     const response = await instance.get(
@@ -21,8 +21,7 @@ export const getIssue = async (dispatch: Dispatch<Action>, id: number) => {
 
   try {
     const response = await instance.get(`/issues/${id}`);
-
-    dispatch({ type: 'GET_ISSUES_SUCCESS', data: response.data });
+    dispatch({ type: 'GET_ISSUE_DETAIL', data: response.data });
   } catch (error) {
     dispatch({ type: 'GET_ISSUES_ERROR', error: error });
   }

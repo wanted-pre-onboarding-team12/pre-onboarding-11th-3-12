@@ -46,13 +46,11 @@ const Home = () => {
         observer.unobserve(pageEnd.current);
       }
     };
-    //if (issues.loading) {
-    //}
   }, []);
   return (
     <>
       <Main>
-        {issues.data?.map((issue: any, index: any) => (
+        {issues.data?.map((issue: any, index: number) => (
           <React.Fragment key={issue.created_at + issue.number + index}>
             {index % 4 === 0 && index !== 0 && (
               <Advertisement
@@ -90,15 +88,6 @@ const Main = styled.main`
     border: 0.5px solid #d0d7de;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.7);
-  }
-`;
-
-const StateTag = styled.div`
-  width: 24px;
-  > svg {
-    width: 24px;
-    height: 24px;
-    fill: #217e3b;
   }
 `;
 

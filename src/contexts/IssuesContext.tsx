@@ -6,7 +6,7 @@ type State = {
   error: any;
 };
 
-type Action =
+export type Action =
   | { type: 'GET_ISSUES' }
   | { type: 'GET_ISSUES_SUCCESS'; data: any }
   | { type: 'GET_ISSUES_ERROR'; error: any }
@@ -41,7 +41,6 @@ const issuesReducer = (state: State, action: Action): State | undefined => {
       };
 
     case 'GET_ISSUE_DETAIL':
-      console.log('GET_ISSUE_DETAIL', state.data);
       const filteredData = state.data.filter(
         (issue: any) => issue.id === action.payload,
       );

@@ -2,7 +2,7 @@
 
 Facebook의 React 레포지토리의 이슈 목록과 상세 내용을 조회할 수 있는 웹사이트 구축
 
-- [**`배포링크`**]()
+- [**`배포링크`**](http://onbording-3-12.s3-website.ap-northeast-2.amazonaws.com/)
 - [**`과제 수행 여부 & Stack/Library`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki)
 
 <br>

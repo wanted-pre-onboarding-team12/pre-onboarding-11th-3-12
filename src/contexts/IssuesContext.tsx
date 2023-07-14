@@ -18,38 +18,35 @@ const initialState: State = {
   error: null,
 };
 
-const issuesReducer = (state: State, action: Action): State => {
+const issuesReducer = (state: State, action: Action): State | undefined => {
   switch (action.type) {
     case 'GET_ISSUES':
-      console.log('GET_ISSUES', state.data);
-
       return {
         ...state,
         loading: true,
       };
+
     case 'GET_ISSUES_SUCCESS':
-      console.log('GET_ISSUES_SUCCESS');
       return {
         loading: false,
         data: [...state.data, ...action.data],
         error: null,
       };
+
     case 'GET_ISSUES_ERROR':
-      console.log('GET_ISSUES_ERROR', state.data);
       return {
         loading: false,
         data: null,
         error: action.error,
       };
+
     case 'GET_ISSUE_DETAIL':
       console.log('GET_ISSUE_DETAIL', state.data);
       const filteredData = state.data.filter(
         (issue: any) => issue.id === action.payload,
       );
-      return {
-        ...state,
-        data: filteredData,
-      };
+      localStorage.setItem('data', JSON.stringify(filteredData[0]));
+      return;
 
     default:
       throw new Error(`Unhanded action type`);
@@ -62,6 +59,7 @@ const IssuesStateContext = createContext<State | null>(null);
 const IssuesDispatchContext = createContext<IssuesDispatch | null>(null);
 
 export function IssuesProvider({ children }: { children: React.ReactNode }) {
+  //@ts-ignore
   const [state, dispatch] = useReducer(issuesReducer, initialState);
   return (
     <IssuesStateContext.Provider value={state}>

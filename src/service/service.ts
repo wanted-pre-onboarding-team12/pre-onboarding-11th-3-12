@@ -15,3 +15,15 @@ export const getIssues = async (dispatch: Dispatch<Action>, page: number) => {
     dispatch({ type: 'GET_ISSUES_ERROR', error: error });
   }
 };
+
+export const getIssue = async (dispatch: Dispatch<Action>, id: number) => {
+  //dispatch({ type: 'GET_ISSUES' });
+
+  try {
+    const response = await instance.get(`/issues/${id}`);
+
+    dispatch({ type: 'GET_ISSUES_SUCCESS', data: response.data });
+  } catch (error) {
+    dispatch({ type: 'GET_ISSUES_ERROR', error: error });
+  }
+};

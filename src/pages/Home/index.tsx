@@ -7,7 +7,6 @@ import {
   useIssuesDispatch,
   useIssuesState,
 } from '../../contexts/IssuesContext';
-import Header from '../../components/Header';
 import { getIssues } from '../../service/service';
 import Loading from '../../components/Common/Loading';
 import Advertisement from '../../components/Advertisement';
@@ -47,10 +46,11 @@ const Home = () => {
         observer.unobserve(pageEnd.current);
       }
     };
+    //if (issues.loading) {
+    //}
   }, []);
   return (
     <>
-      <Header />
       <Main>
         {issues.data?.map((issue: any, index: any) => (
           <React.Fragment key={issue.created_at + issue.number + index}>

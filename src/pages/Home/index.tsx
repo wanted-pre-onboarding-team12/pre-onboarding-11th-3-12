@@ -18,42 +18,42 @@ const Home = () => {
   const issues = useIssuesState();
   const [page, setPage] = useState(1);
   const pageEnd = useRef<HTMLDivElement>(null);
+  console.log('adsf', page);
 
   const loadMore = () => {
     setPage(prev => prev + 1);
   };
 
   useEffect(() => {
-    const fetchIssues = async () => {
-      await getIssues(dispatch, page);
-    };
-
-    fetchIssues();
+    getIssues(dispatch, page);
   }, [dispatch, page]);
 
   useEffect(() => {
-    if (issues.loading) {
-      const observer = new IntersectionObserver(
-        entries => {
-          if (entries[0].isIntersecting) {
-            loadMore();
-          }
-        },
-        { threshold: 1 },
-      );
-
-      if (pageEnd.current) {
-        observer.observe(pageEnd.current);
-      }
-
-      return () => {
-        if (pageEnd.current) {
-          observer.unobserve(pageEnd.current);
+    console.log(issues);
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting) {
+          console.log('1');
+          loadMore();
         }
-      };
-    }
-  }, [issues.loading]);
+      },
+      { threshold: 0.5 },
+    );
 
+    if (pageEnd.current) {
+      console.log('open');
+      observer.observe(pageEnd.current);
+    }
+
+    return () => {
+      if (pageEnd.current) {
+        console.log('close');
+        observer.unobserve(pageEnd.current);
+      }
+    };
+    //if (issues.loading) {
+    //}
+  }, []);
   return (
     <>
       <Header />
@@ -71,11 +71,8 @@ const Home = () => {
           </React.Fragment>
         ))}
       </Main>
-      {issues.loading && (
-        <div ref={pageEnd}>
-          <Loading />
-        </div>
-      )}
+      <div ref={pageEnd}></div>
+      {issues.loading && <Loading />}
     </>
   );
 };

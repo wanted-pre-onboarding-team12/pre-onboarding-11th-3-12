@@ -25,7 +25,7 @@ const IssueDetail = ({ issue }: any) => {
           </p>
           <p className="rightp">
             <span>작성자:{issue?.user.login}</span>
-            <span>작성일:{issue?.created_at}</span>
+            <span>작성일:{issue?.created_at.slice(0, 10)}</span>
           </p>
         </LeftDiv>
         <RightDiv>

@@ -74,7 +74,6 @@ const issuesReducer = (state: InitialState, action: Action): any => {
       };
 
     case 'GET_ISSUE':
-      console.log('get');
       return {
         ...state,
         issue: loadingState(),

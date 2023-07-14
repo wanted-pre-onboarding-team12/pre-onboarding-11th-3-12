@@ -6,7 +6,7 @@ type State = {
   error: any;
 };
 
-type Action =
+export type Action =
   | { type: 'GET_ISSUES' }
   | { type: 'GET_ISSUES_SUCCESS'; data: any }
   | { type: 'GET_ISSUES_ERROR'; error: any }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
-import Header from '../../components/Header';
+import Header from '../../components/Layout/Header';
 import IssueDetail from '../../components/IssueDetail';
 import {
   useIssuesDispatch,
@@ -22,7 +22,6 @@ const Detail = () => {
 
   return (
     <Wrap>
-      <Header />
       <IssueDetail issue={issue.data} />
     </Wrap>
   );

@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { IconGithub } from '../../assets/index';
 import { useNavigate } from 'react-router-dom';

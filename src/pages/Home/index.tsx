@@ -7,7 +7,7 @@ import {
   useIssuesDispatch,
   useIssuesState,
 } from '../../contexts/IssuesContext';
-import Header from '../../components/Header';
+import Header from '../../components/Layout/Header';
 import { getIssues } from '../../service/service';
 import Loading from '../../components/Common/Loading';
 import Advertisement from '../../components/Advertisement';
@@ -32,6 +32,7 @@ const Home = () => {
     const observer = new IntersectionObserver(
       entries => {
         if (entries[0].isIntersecting) {
+          console.log('1');
           loadMore();
         }
       },
@@ -47,6 +48,8 @@ const Home = () => {
         observer.unobserve(pageEnd.current);
       }
     };
+    //if (issues.loading) {
+    //}
   }, []);
   return (
     <>

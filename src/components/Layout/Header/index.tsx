@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { IconGithub } from '../../assets/index';
+import { IconGithub } from '../../../assets/index';
 import { useNavigate } from 'react-router-dom';
-import { useIssuesState } from '../../contexts/IssuesContext';
-import { orgRepoName } from '../Common/OrgRefoName';
+import { useIssuesState } from '../../../contexts/IssuesContext';
+import { orgRepoName } from '../../Common/OrgRefoName';
 
 const Header = () => {
   const navigate = useNavigate();

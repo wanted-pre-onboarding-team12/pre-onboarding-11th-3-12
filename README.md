@@ -1,15 +1,15 @@
 ## 원티드 프리온보딩 프론트엔드 인턴십 - 3주차 과제
+
 Facebook의 React 레포지토리의 이슈 목록과 상세 내용을 조회할 수 있는 웹사이트 구축
 
-- [**`배포링크`**]()
+- [**`배포링크`**](http://onbording-3-12.s3-website.ap-northeast-2.amazonaws.com/)
 - [**`과제 수행 여부 & Stack/Library`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki)
 
-
 <br>
 <br>
-
 
 ## 📌 프로젝트 시작
+
 ```
 npm install
 npm start
@@ -36,20 +36,15 @@ npm start
 
 - [**`디테일 페이지 마크다운 -> 마크업으로 변환`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki/Best-Practice#%EB%94%94%ED%85%8C%EC%9D%BC-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4---%EB%A7%88%ED%81%AC%EC%97%85%EC%9C%BC%EB%A1%9C-%EB%B3%80%ED%99%98)
 
-
 <br>
 <br>
-
 
 ## 📌 데모 영상
 
-
 **TODO: 위키**
 
-
 <br>
 <br>
-
 
 ## 📌 원티드 프리온보딩 12팀 개발 문화
 
@@ -62,4 +57,3 @@ npm start
 - [**`커뮤니케이션 툴`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-12%ED%8C%80#%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98-%ED%88%B4)
 
 - [**`폴더구조 & 파일 명명 & 커밋 컨벤션`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-12%ED%8C%80#%EC%BB%A8%EB%B2%A4%EC%85%98)
-

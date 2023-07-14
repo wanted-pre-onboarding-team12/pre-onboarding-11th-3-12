@@ -7,7 +7,6 @@ import {
   useIssuesDispatch,
   useIssuesState,
 } from '../../contexts/IssuesContext';
-import Header from '../../components/Header';
 import { getIssues } from '../../service/service';
 import Loading from '../../components/Common/Loading';
 import Advertisement from '../../components/Advertisement';
@@ -15,7 +14,8 @@ import IssueItem from '../../components/IssueItem';
 
 const Home = () => {
   const dispatch = useIssuesDispatch();
-  const issues = useIssuesState();
+  //@ts-ignore
+  const { issues } = useIssuesState();
   const [page, setPage] = useState(1);
   const pageEnd = useRef<HTMLDivElement>(null);
 
@@ -31,7 +31,6 @@ const Home = () => {
     const observer = new IntersectionObserver(
       entries => {
         if (entries[0].isIntersecting) {
-          console.log('1');
           loadMore();
         }
       },
@@ -47,15 +46,12 @@ const Home = () => {
         observer.unobserve(pageEnd.current);
       }
     };
-    //if (issues.loading) {
-    //}
   }, []);
   return (
     <>
-      <Header />
       <Main>
-        {issues.data?.map((issue: any, index: any) => (
-          <React.Fragment key={issue.created_at + issue.number}>
+        {issues.data?.map((issue: any, index: number) => (
+          <React.Fragment key={issue.created_at + issue.number + index}>
             {index % 4 === 0 && index !== 0 && (
               <Advertisement
                 src={adObject.src}
@@ -92,15 +88,6 @@ const Main = styled.main`
     border: 0.5px solid #d0d7de;
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.7);
-  }
-`;
-
-const StateTag = styled.div`
-  width: 24px;
-  > svg {
-    width: 24px;
-    height: 24px;
-    fill: #217e3b;
   }
 `;
 

@@ -4,22 +4,17 @@ import styled from '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import { IconMessage } from '../../assets';
 import { IconLeaf } from '../../assets';
-import { useIssuesDispatch } from '../../contexts/IssuesContext';
 
 const IssueItem = ({ issue }: any) => {
   const navigate = useNavigate();
-  const dispatch = useIssuesDispatch();
 
   const handleClick = () => {
-    dispatch({ type: 'GET_ISSUE_DETAIL', payload: issue.id });
-    navigate(`/detail/${issue.id}`);
+    navigate(`/detail/${issue.number}`);
   };
 
   return (
     <Center onClick={handleClick}>
-      <Padding16>
-        <IconLeaf />
-      </Padding16>
+      <Padding16>{issue.state === 'open' && <IconLeaf />}</Padding16>
       <Article>
         <Left>
           <Title>
@@ -42,6 +37,11 @@ const IssueItem = ({ issue }: any) => {
 };
 const Padding16 = styled.div`
   padding: 16px;
+  > svg {
+    width: 24px;
+    height: 24px;
+    fill: #217e3b;
+  }
 `;
 const Center = styled.div`
   display: flex;

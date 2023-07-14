@@ -2,8 +2,9 @@ import { Global, css } from '@emotion/react';
 import emotionReset from 'emotion-reset';
 
 const style = css`
-  ${emotionReset}
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+  ${emotionReset}
 
   * {
     margin: 0;

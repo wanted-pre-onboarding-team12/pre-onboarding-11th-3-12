@@ -2,13 +2,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Header from '../../components/Header';
 import IssueDetail from '../../components/IssueDetail';
-import { useIssuesState } from '../../contexts/IssuesContext';
 
 const Detail = () => {
   const issue = JSON.parse(localStorage.getItem('data') || '{}');
   return (
     <Wrap>
-      <Header />
+      {/* <Header /> */}
       <IssueDetail issue={issue} />
     </Wrap>
   );

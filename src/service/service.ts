@@ -1,7 +1,7 @@
 import instance from './config';
 
 export const getIssues = async (dispatch: any, page: number) => {
-  dispatch({ type: 'GET_ISSUES' });
+  //dispatch({ type: 'GET_ISSUES' });
 
   try {
     const response = await instance.get(

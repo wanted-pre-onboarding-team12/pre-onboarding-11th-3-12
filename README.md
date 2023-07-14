@@ -10,7 +10,6 @@ Facebook의 React 레포지토리의 이슈 목록과 상세 내용을 조회할
 
 
 ## 📌 프로젝트 시작
-
 ```
 npm install
 npm start
@@ -63,3 +62,4 @@ npm start
 - [**`커뮤니케이션 툴`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-12%ED%8C%80#%EC%BB%A4%EB%AE%A4%EB%8B%88%EC%BC%80%EC%9D%B4%EC%85%98-%ED%88%B4)
 
 - [**`폴더구조 & 파일 명명 & 커밋 컨벤션`**](https://github.com/wanted-pre-onboarding-team12/pre-onboarding-11th-3-12/wiki/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-12%ED%8C%80#%EC%BB%A8%EB%B2%A4%EC%85%98)
+

@@ -18,7 +18,6 @@ const Home = () => {
   const issues = useIssuesState();
   const [page, setPage] = useState(1);
   const pageEnd = useRef<HTMLDivElement>(null);
-  console.log('adsf', page);
 
   const loadMore = () => {
     setPage(prev => prev + 1);
@@ -29,7 +28,6 @@ const Home = () => {
   }, [dispatch, page]);
 
   useEffect(() => {
-    console.log(issues);
     const observer = new IntersectionObserver(
       entries => {
         if (entries[0].isIntersecting) {
@@ -41,13 +39,11 @@ const Home = () => {
     );
 
     if (pageEnd.current) {
-      console.log('open');
       observer.observe(pageEnd.current);
     }
 
     return () => {
       if (pageEnd.current) {
-        console.log('close');
         observer.unobserve(pageEnd.current);
       }
     };
@@ -58,7 +54,7 @@ const Home = () => {
     <>
       <Header />
       <Main>
-        {issues.data.map((issue: any, index: any) => (
+        {issues.data?.map((issue: any, index: any) => (
           <React.Fragment key={issue.created_at + issue.number}>
             {index % 4 === 0 && index !== 0 && (
               <Advertisement

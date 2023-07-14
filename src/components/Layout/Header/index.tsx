@@ -7,8 +7,8 @@ import { orgRepoName } from '../../Common/OrgRefoName';
 const Header = () => {
   const navigate = useNavigate();
   //@ts-ignore
-  const { issues, issue } = useIssuesState();
-  const { orgName, repoName } = orgRepoName(issues.data);
+  const { issues } = useIssuesState();
+  const { orgName, repoName } = orgRepoName(issues?.data);
 
   return (
     <HeaderBox>

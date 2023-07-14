@@ -22,7 +22,6 @@ const Detail = () => {
 
   return (
     <Wrap>
-      <Header />
       <IssueDetail issue={issue.data} />
     </Wrap>
   );

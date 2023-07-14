@@ -23,7 +23,7 @@ const IssueItem = ({ issue }: any) => {
           </Title>
 
           <Bottom>
-            <span>작성자 : {issue.username} </span>
+            <span>작성자 : {issue.user.login} </span>
             <span>작성일 : {issue.created_at.slice(0, 10)}</span>
           </Bottom>
         </Left>

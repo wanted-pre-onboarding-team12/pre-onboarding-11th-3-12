@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import styled from '@emotion/styled';
 import { IconLeaf } from '../../assets';
 import { IconMessage } from '../../assets';
 
 const IssueDetail = ({ issue }: any) => {
-  console.log({ issue });
-  // TODO : 37번째줄의 <Section> 태그 안에 {issue.body} 를 마크다운해서 넣어줘야합니다
   return (
     <main>
       <Article>
@@ -33,7 +33,9 @@ const IssueDetail = ({ issue }: any) => {
           <div> {issue.comments}</div>
         </RightDiv>
       </Article>
-      <Section>{/* body */}</Section>
+      <Section>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue.body}</ReactMarkdown>
+      </Section>
     </main>
   );
 };

@@ -1,7 +1,9 @@
+import { Dispatch } from 'react';
 import instance from './config';
+import { Action } from '../contexts/IssuesContext';
 
-export const getIssues = async (dispatch: any, page: number) => {
-  dispatch({ type: 'GET_ISSUES' });
+export const getIssues = async (dispatch: Dispatch<Action>, page: number) => {
+  //dispatch({ type: 'GET_ISSUES' });
 
   try {
     const response = await instance.get(

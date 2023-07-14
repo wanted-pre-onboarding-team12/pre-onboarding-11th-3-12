@@ -1,20 +1,19 @@
-import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import { IconGithub } from '../../assets/index';
 import { useNavigate } from 'react-router-dom';
+import { useIssuesState } from '../../contexts/IssuesContext';
+import { orgRepoName } from '../Common/OrgRefoName';
 
 const Header = () => {
   const navigate = useNavigate();
-  const title = {
-    organization: 'facebook',
-    repository: 'react',
-  };
+  const state = useIssuesState();
+  const { orgName, repoName } = orgRepoName(state.data);
 
   return (
     <HeaderBox>
       <TitleWrap onClick={() => navigate('/')}>
         <IconGithub />
-        {title.organization.toUpperCase()} / {title.repository.toUpperCase()}
+        {orgName} / {repoName}
       </TitleWrap>
     </HeaderBox>
   );

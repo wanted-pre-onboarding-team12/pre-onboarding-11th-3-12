@@ -1,4 +1,5 @@
-name: deploy
+name: Deploy
+
 
 on:
   push:
@@ -7,7 +8,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  cicd:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: 'echo "Test"'
+      - uses: actions/checkout@v3
+        with:
+          ref: 'release'
+      - run: npm ci
+      - run: npm run build
+      - name: deploy to s3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete
+        env:
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          REACT_APP_GITHUB_TOKEN: ${{ secrets.REACT_APP_GITHUB_TOKEN }}
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: 'ap-northeast-2'
+          SOURCE_DIR: 'build'
+
